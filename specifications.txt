@@ -1,0 +1,22 @@
+Project Diana AV Format
+
+Each frame contains one second of video material
+
+SYNC 02 C9 AD
+
+INFO BYTE
+BITS 0-1 : Format; 00=NTSC 01=PAL 10=SECAM 11=INVALID
+BITS 2-5 : Format extension*
+BITS 6-6 : Bandwidth; 0=6.3 1=8.4 (MHz) (Note: For 48dB SNR it's 6291454 or 8388606 Hz, but for 96dB SNR it's 6291455 and 8388607 Hz)
+BITS 7-7 : SNR; 0=48 1=96 (dB) / 0=8 1=16 (bits)
+
+DATA - One second per frame
+For 96dB SNR and 8.4MHz bandwidth: 33554428 byte per frame (second)
+For 96dB SNR and 6.3MHz bandwidth: 25165820 byte per frame (second)
+For 48dB SNR and 8.4MHz bandwidth: 16777212 byte per frame (second)
+For 48dB SNR and 6.3MHz bandwidth: 12582908 byte per frame (second)
+
+*Format extension table
+In case of PAL
+0000=PAL-B
+... (to be continued)
